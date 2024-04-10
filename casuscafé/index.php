@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $price = $_POST["entreePrijs"];
 
             // info zetten in database(muziekavonden)
-            $stmt = $db->prepare("INSERT INTO `muziekavonden` (`datum`, `eventnaam`, `aanvangsttijd`, `entreeprijs`) VALUES (:datum, :eventnaam, :aanvangsttijd, :entreeprijs)");
+            $stmt = $db->prepare("INSERT INTO `muziekavonden` (`idMuziekavond`, `datum`, `eventnaam`, `aanvangsttijd`, `entreeprijs`) VALUES (:idMuziekavond, :datum, :eventnaam, :aanvangsttijd, :entreeprijs)");
 
             //parameters van muziekavonden
             $stmt->bindParam(':idMuziekavond', $idEvent);
@@ -44,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $muziekgenre = $_POST["muziekgenre"];
 
             //info zetten in database(bands)
-            $stmt = $db->prepare("INSERT INTO `bands` (`bandnaam`, `muziekgenre`) VALUES (:bandnaam, :muziekgenre)");
+            $stmt = $db->prepare("INSERT INTO `bands` (`idBand`, `bandnaam`, `muziekgenre`) VALUES (:idBand, :bandnaam, :muziekgenre)");
 
             //parameters van bands
             $stmt->bindParam(':idBand', $idBand);
