@@ -84,6 +84,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h1>Casus Café</h1>
+    <a href="events.php">Actuele events</a>
     <h2> Event Aanmaken</h2>
 
 <form action="index.php" method="post">
