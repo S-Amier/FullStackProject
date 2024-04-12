@@ -8,8 +8,8 @@ try {
     $db = new PDO("mysql:host=$servername;dbname=casuscafé", $username, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $db->query("SELECT idMuziekavond, datum, eventnaam, aanvangsttijd, entreeprijs FROM muziekavonden 
-    INNER JOIN muziekavonden_has_bands ON muziekavonden_has_bands.muziekavonden_idMuziekavond = muziekavond.idMuziekavond
+    $stmt = $db->query("SELECT idMuziekavond, datum, eventnaam, aanvangsttijd, entreeprijs, bandnaam, muziekgenre FROM muziekavonden 
+    INNER JOIN muziekavonden_has_bands ON muziekavonden_has_bands.muziekavonden_idMuziekavond = muziekavonden.idMuziekavond
     INNER JOIN bands ON muziekavonden_has_bands.bands_idBand = bands.idBand");
 
     $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ try {
             <div class="event-details">
                 <div class="event-info">
                     <div><?php echo $event['datum']; ?></div>
-                    <div><?php echo $event['aanvangstijd']; ?></div>
+                    <div><?php echo $event['aanvangsttijd']; ?></div>
                 </div>
                 <div class="event-name">
                     <div><?php echo $event['eventnaam']; ?></div>
