@@ -24,11 +24,11 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Events</title>
-    <style>
-    </style>
 </head>
 <body>
+    <a href="index.php">Terug naar forms</a>
     <h1> Events </h1>
     <?php foreach ($events as $event): ?>
         <div class="event">

@@ -1,0 +1,17 @@
+.event {
+    margin-bottom: 20px;
+}
+
+.event-details {
+    display: flex;
+    justify-content: space-between;
+}
+.event-info {
+    margin-right: 20px;
+}
+.bands {
+    margin-left: 20px;
+}
+.band {
+    margin-bottom: 20px;
+}
