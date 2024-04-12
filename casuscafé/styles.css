@@ -1,17 +1,31 @@
+
 .event {
     margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
 .event-details {
     display: flex;
     justify-content: space-between;
 }
+
 .event-info {
     margin-right: 20px;
 }
+
+.event-name {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.event-price {
+    text-align: right;
+}
+
 .bands {
-    margin-left: 20px;
+    text-align: center;
 }
 .band {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }

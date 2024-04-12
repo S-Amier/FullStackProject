@@ -38,7 +38,9 @@ try {
                     <div><?php echo $event['aanvangsttijd']; ?></div>
                 </div>
                 <div class="event-name">
-                    <div><?php echo $event['eventnaam']; ?></div>
+                    <div><h2><?php echo $event['eventnaam']; ?></h2></div>
+                </div>
+                <div class="event-price">
                     <div><?php echo "Price: €" . $event['entreeprijs']; ?></div>
                 </div>
             </div>
