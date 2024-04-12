@@ -45,7 +45,7 @@ try {
                 </div>
             </div>
             <div class="bands">
-                <h3>Bands die komen optreden:</h3>
+                <p>Bands die komen optreden:</p>
                 <?php echo $event['bandnaam']; ?> - <?php echo $event['muziekgenre']; ?>
             </div>
         </div>
