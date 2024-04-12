@@ -57,13 +57,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if (isset($_POST['add_band_to_event'])) {
+            $idEvent = $_POST['idMuziekavond'];
             $idBand = $_POST['idBand'];
-            $idevent = $_POST['idMuziekavond'];
+
 
             //info in tussentabel plaatsen
-            $stmt = $db->prepare("INSERT INTO `muziekavonden_has_bands` (`Bands_idBand`, `Muziekavonden_idMuziekavond`) VALUES (:idBand, :idMuziekavond)");
-            $stmt->bindParam(':idBand', $idBand);
+            $stmt = $db->prepare("INSERT INTO `muziekavonden_has_bands` (`Muziekavonden_idMuziekavond`, `Bands_idBand`) VALUES (:idMuziekavond, :idBand)");
             $stmt->bindParam(':idMuziekavond', $idEvent);
+            $stmt->bindParam(':idBand', $idBand);
             $stmt->execute();
             echo "Band succesvol gelinked aan muziekavond";
         }
