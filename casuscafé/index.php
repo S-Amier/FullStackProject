@@ -55,6 +55,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute();
             echo "Band geadd";
         }
+
+        if (isset($_POST['add_band_to_event'])) {
+            $idBand = $_POST['idBand'];
+            $idevent = $_POST['idMuziekavond'];
+
+            //info in tussentabel plaatsen
+            $stmt = $db->prepare("INSERT INTO `muziekavonden_has_bands` (`Bands_idBand`, `Muziekavonden_idMuziekavond`) VALUES (:idBand, :idMuziekavond)");
+            $stmt->bindParam(':idBand', $idBand);
+            $stmt->bindParam(':idMuziekavond', $idEvent);
+            $stmt->execute();
+            echo "Band succesvol gelinked aan muziekavond";
+        }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage(); 
     }
@@ -100,6 +112,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="text" name="muziekgenre" id="muziekgenre"><br>
     <input type="hidden" name="add_band" value="1">
     <input type="submit" value="Band toevoegen">
+</form>
+
+    <h2> Band aan muziekavonden linken</h2>
+
+<form action="index.php"method="post">
+    <label for="idBand">idMuziekavond</label>
+    <input type="text" name="idMuziekavond" id="idMuziekavond"><br>
+    <label for="idBand">idBand</label>
+    <input type="text" name="idBand" id="idBand"><br>
+    <input type="hidden" name="add_band_to_event" value="1">
+    <input type="submit" value="Band aan muziekavond linken">
 </form>
 </body>
 </html>
