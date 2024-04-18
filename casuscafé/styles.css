@@ -1,6 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #141414;
+    background-color: #00a890;
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -13,9 +13,10 @@ h1 {
 .event {
     margin-bottom: 30px;
     padding: 20px;
-    border: 1px solid #dddddd;
+    background-color: #007F6D60;
+    border: 1px solid #;
     border-radius: 5px;
-    background-color: #1e1e1e;
+    background-color: #007F6D;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
