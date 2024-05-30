@@ -94,7 +94,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     <input type="text" name="datum" id="datum"><br>
     <label for="aanvangsttijd">aanvangsttijd</label>
     <input type="text" name="aanvangsttijd" id="aanvangsttijd"><br>
-    <label for="eventnaam">eventnaam:</label>
+    <label for="eventnaam">eventnaam</label>
     <input type="text" name="eventnaam" id="eventnaam"><br>
     <label for="entreeprijs">Entree Prijs</label>
     <input type="text" name="entreePrijs" id="entreeprijs"><br>

@@ -8,11 +8,34 @@ try {
     $db = new PDO("mysql:host=$servername;dbname=casuscafé", $username, $password);
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $stmt = $db->query("SELECT idMuziekavond, datum, eventnaam, aanvangsttijd, entreeprijs, bandnaam, muziekgenre FROM muziekavonden 
-    INNER JOIN muziekavonden_has_bands ON muziekavonden_has_bands.muziekavonden_idMuziekavond = muziekavonden.idMuziekavond
-    INNER JOIN bands ON muziekavonden_has_bands.bands_idBand = bands.idBand");
+    $stmt = $db->query("SELECT idMuziekavond, datum, eventnaam, aanvangsttijd, entreeprijs, bandnaam, muziekgenre 
+                        FROM muziekavonden 
+                        LEFT JOIN muziekavonden_has_bands ON muziekavonden_has_bands.muziekavonden_idMuziekavond = muziekavonden.idMuziekavond
+                        LEFT JOIN bands ON muziekavonden_has_bands.bands_idBand = bands.idBand");
 
-    $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Associatieve array om bands te koppelen
+    $events = [];
+    foreach ($results as $row) {
+        $eventId = $row['idMuziekavond'];
+        if (!isset($events[$eventId])) {
+            $events[$eventId] = [
+                'datum' => $row['datum'],
+                'eventnaam' => $row['eventnaam'],
+                'aanvangsttijd' => $row['aanvangsttijd'],
+                'entreeprijs' => $row['entreeprijs'],
+                'bands' => []
+            ];
+        }
+        if ($row['bandnaam']) {
+            $events[$eventId]['bands'][] = [
+                'bandnaam' => $row['bandnaam'],
+                'muziekgenre' => $row['muziekgenre']
+            ];
+        }
+    }
+
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -44,9 +67,12 @@ try {
                     <div><?php echo "Price: €" . $event['entreeprijs']; ?></div>
                 </div>
             </div>
+            <!-- Bands weergeven -->
             <div class="bands">
                 <p>Bands die komen optreden:</p>
-                <?php echo $event['bandnaam']; ?> - <?php echo $event['muziekgenre']; ?>
+                <?php foreach ($event['bands'] as $band): ?>
+                    <div><?php echo $band['bandnaam']; ?> - <?php echo $band['muziekgenre']; ?></div>
+                <?php endforeach; ?>
             </div>
         </div>
     <?php endforeach; ?>
